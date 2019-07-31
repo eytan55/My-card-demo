@@ -1,0 +1,100 @@
+<h1 class="text-center">My card</h1>
+<br />
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center">Add new item to your card: </h4>
+    <br/>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label"
+              >Product Name</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+                placeholder="Product Name..."
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label"
+              >Product Description</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="description"
+                placeholder="Product Description..."
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label"
+              >Unit Price</label
+            >
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="price"
+                  placeholder="150..."
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">₪</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label"
+              >Quantity</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="quantity"
+                placeholder="13..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary float-right">Submit</button>
+    </form>
+  </div>
+</div>
+<br />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Description</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let carditem of mycardArray; let i = index">
+      <td>{{ carditem.name }}</td>
+      <td>{{ carditem.description }}</td>
+      <td>{{ carditem.price }} ₪</td>
+      <td>{{ carditem.quantity }}</td>
+      <td>{{ carditem.totalPrice }} ₪</td>
+    </tr>
+    <tr>
+      <td>Total card price</td>
+      <td colspan="3"></td>
+      <td><b>{{ totalCardPrice }} ₪</b></td>
+    </tr>
+  </tbody>
+</table>
